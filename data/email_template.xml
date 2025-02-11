@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <!-- Plantilla de correo para el pedido confirmado -->
+        <record id="email_template_order_confirmed" model="mail.template">
+            <field name="name">Order Confirmation Email</field>
+            <field name="email_from">${(user.email or '')|safe}</field>
+            <field name="subject">Pedido Confirmado: ${object.name}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Estimado Cliente,</p>
+                <p>El pedido <b>${object.name}</b> ha sido confirmado exitosamente.</p>
+                <p>Gracias por su compra.</p>
+                <p>Saludos,</p>
+                <p>El equipo de Odoo</p>
+                ]]>
+            </field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+        </record>
+    </data>
+</odoo>
